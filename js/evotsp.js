@@ -97,7 +97,7 @@
             contentType: 'application/json',
             // When a request completes, call `showRoute()` to display the
             // route on the web page.
-            success: showRoute,
+            success: showBestRoute,
             error: function ajaxError(jqXHR, textStatus, errorThrown) {
                 console.error(
                     'Error generating random route: ', 
