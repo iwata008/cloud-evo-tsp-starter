@@ -87,27 +87,7 @@
     // You should add each of these to `#best-route-list`
     // (after clearing it first).
     function getBestRoutes(event) {
-        $.ajax({
-            method: 'GET',
-            url: baseUrl + '/routes',
-            data: JSON.stringify({
-                runId: runId,
-                generation: generation
-            }),
-            contentType: 'application/json',
-            // When a request completes, call `showRoute()` to display the
-            // route on the web page.
-            success: showBestRoute,
-            error: function ajaxError(jqXHR, textStatus, errorThrown) {
-                console.error(
-                    'Error generating random route: ', 
-                    textStatus, 
-                    ', Details: ', 
-                    errorThrown);
-                console.error('Response: ', jqXHR.responseText);
-                alert('An error occurred when creating a random route:\n' + jqXHR.responseText);
-            }
-        })
+        alert('You need to implement getRouteById()');
     }
 
     function showBestRoute(result) {
