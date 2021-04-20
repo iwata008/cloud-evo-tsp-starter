@@ -87,14 +87,22 @@
     // You should add each of these to `#best-route-list`
     // (after clearing it first).
     function getBestRoutes(event) {
-        alert('You need to implement getRouteById()');
+        $.ajax({
+            method:'GET',
+            url:baseUrl + '/routes/:routeId',
+            data: JSON.stringify({
+                routeId: routeId,
+            }),
+            contentType: 'application/json',
+            success: showBestRoutes,
+        })
     }
 
-    function showBestRoute(result) {
-        console.log('New route received from API: ', result);
-        const length = result.len;
+    function showBestRoutes(result) {
         const routeId = result.routeId;
-        $('#best-route-list').append(${length} ${routeId});
+        const length = result.len;
+
+        $('#best-route-list').apend(`<li>${length} (${routeId})</li>`)
     }
 
     // Make a `GET` request that gets all the route information
@@ -105,7 +113,24 @@
     // You should display the returned information in 
     // `#route-by-id-elements` (after clearing it first).
     function getRouteById() {
-        alert('You need to implement getRouteById()');
+        $.ajax({
+            method:'GET',
+            url:baseUrl + '/routes/:routeId',
+            data: JSON.stringify({
+                routeId: routeId,
+            }),
+            contentType: 'application/json',
+            success: showRouteById,
+        })
+    }
+
+    function showRouteById(result) {
+        const partitionKey = result.partitionKey;
+        const routeId = result.routeId;
+        const length = result.len;
+        const route = result.route;
+
+        $('#route-by-id-elements').append(`<li>Parition Key: ${partitionKey}</li><br> + <li>Route ID: ${routeId}</li><br><li>Length: ${length} </li><br><li>Route: ${route}</li>`);
     }
 
 }(jQuery));
