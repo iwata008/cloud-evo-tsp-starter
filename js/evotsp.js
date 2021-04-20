@@ -75,7 +75,7 @@
     function showRoute(result) {
         console.log('New route received from API: ', result);
         const routeId = result.routeId;
-        const len = result.length;
+        const len = result.len;
         $('#new-route-list').append(`<li>We generated route ${routeId} with length ${len}.</li>`);
     }
 
