@@ -86,24 +86,44 @@
     //    { length: …, routeId: …}
     // You should add each of these to `#best-route-list`
     // (after clearing it first).
-    function getBestRoutes(event) {
+    function bestRoutes(runId, generation, numToReturn) {
         $.ajax({
             method:'GET',
-            url:baseUrl + '/routes/:routeId',
+            url:baseUrl + '/best?runId=&generation=3&numToReturn=20',
             data: JSON.stringify({
                 routeId: routeId,
             }),
             contentType: 'application/json',
             success: showBestRoutes,
+            error: function ajaxError(jqXHR, textStatus, errorThrown) {
+                console.error(
+                    'Error generating random route: ', 
+                    textStatus, 
+                    ', Details: ', 
+                    errorThrown);
+                console.error('Response: ', jqXHR.responseText);
+                alert('An error occurred when creating a random route:\n' + jqXHR.responseText);
+            }
         })
+    }
+
+    function getBestRoutes(event){
+        const runId = $('#runId-text-field').val();
+        const generation = $('#generation-text-field').val();
+        const numToGenerate =$('#num-to-generate').val();
+        
+        $('#best-route-list').text('');
+        bestRoutes(runId, generation, numToReturn);
+
     }
 
     function showBestRoutes(result) {
         const routeId = result.routeId;
         const length = result.len;
 
-        $('#best-route-list').apend(`<li>${length} (${routeId})</li>`)
+        $('#best-route-list').apend(`<li>${length} (${routeId})</li>`);
     }
+
 
     // Make a `GET` request that gets all the route information
     // for the given `routeId`.
@@ -112,19 +132,33 @@
     // This request will return a complete route JSON object.
     // You should display the returned information in 
     // `#route-by-id-elements` (after clearing it first).
-    function getRouteById() {
+    function routeById(routeId) {
         $.ajax({
             method:'GET',
-            url:baseUrl + '/routes/:routeId',
-            data: JSON.stringify({
-                routeId: routeId,
-            }),
+            url:baseUrl + '/routes/' + routeId,
             contentType: 'application/json',
             success: showRouteById,
+            error: function ajaxError(jqXHR, textStatus, errorThrown) {
+                console.error(
+                    'Error getting route: ', 
+                    textStatus, 
+                    ', Details: ', 
+                    errorThrown);
+                console.error('Response: ', jqXHR.responseText);
+                alert('An error occurred when getting the route:\n' + jqXHR.responseText);
+            }
         })
     }
 
+    function getRouteById() {
+        const routeId = $('#route-ID').val();
+        $('route-by-id').text('');
+        routeById(routeId);
+    }
+
     function showRouteById(result) {
+        console.log('New route received from API: ', result);
+
         const partitionKey = result.partitionKey;
         const routeId = result.routeId;
         const length = result.len;
