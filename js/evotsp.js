@@ -107,10 +107,10 @@
     function getBestRoutes(event){
         const runId = $('#runId-text-field').val();
         const generation = $('#generation-text-field').val();
-        const numToReturn =$('#num-to-generate').val();
+        const numToGenerate =$('#num-to-generate').val();
 
         $('#best-route-list').text('');
-        bestRoutes(runId, generation, numToReturn);
+        bestRoutes(runId, generation, numToGenerate);
 
     }
 
