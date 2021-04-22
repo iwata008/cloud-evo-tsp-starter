@@ -115,7 +115,6 @@
     }
 
     function showBestRoutes(result) {
-      console.log(result);
       for (let i = 0; i < result.length; i++) {
         const routeId = result[i].routeId;
         const length = result[i].length;
