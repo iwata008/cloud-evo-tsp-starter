@@ -23,7 +23,7 @@
     function randomRoute(runId, generation) {
         $.ajax({
             method: 'POST',
-            url: baseUrl + '/Routes',
+            url: baseUrl + '/routes',
             data: JSON.stringify({
                 runId: runId,
                 generation: generation
