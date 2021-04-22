@@ -75,8 +75,8 @@
     function showRoute(result) {
         console.log('New route received from API: ', result);
         const routeId = result.routeId;
-        const len = result.len;
-        $('#new-route-list').append(`<li>We generated route ${routeId} with length ${len}.</li>`);
+        const length = result.length;
+        $('#new-route-list').append(`<li>We generated route ${routeId} with length ${length}.</li>`);
     }
 
     // Make a `GET` request that gets the K best routes.
