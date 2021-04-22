@@ -115,11 +115,12 @@
     }
 
     function showBestRoutes(result) {
-      console.log(result);
-        const routeId = result.routeId;
-        const length = result.len;
+      for (let i = 0; i < result.length; i++) {
+        const routeId = result[i].routeId;
+        const length = result[i].length;
 
         $('#best-route-list').append(`<li>${length} (${routeId})</li>`);
+      }
     }
 
 
