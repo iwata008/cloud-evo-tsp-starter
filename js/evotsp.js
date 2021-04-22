@@ -164,7 +164,7 @@
         const length = result[0].length;
         const route = result[0].route;
 
-        $('#route-by-id-elements').append(`<li>Parition Key: ${partitionKey}</li><br> + <li>Route ID: ${routeId}</li><br><li>Length: ${length} </li><br><li>Route: ${route}</li>`);
+        $('#route-by-id-elements').append(`<li>Parition Key: ${partitionKey}</li><br>  <li>Route ID: ${routeId}</li><br><li>Length: ${length} </li><br><li>Route: ${route}</li>`);
     }
 
 }(jQuery));
