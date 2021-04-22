@@ -119,7 +119,7 @@
 
     function showBestRoutes(result) {
         const routeId = result.routeId;
-        const length = result.len;
+        const length = result.length;
 
         $('#best-route-list').apend(`<li>${length} (${routeId})</li>`);
     }
@@ -161,7 +161,7 @@
 
         const partitionKey = result.partitionKey;
         const routeId = result.routeId;
-        const length = result.len;
+        const length = result.length;
         const route = result.route;
 
         $('#route-by-id-elements').append(`<li>Parition Key: ${partitionKey}</li><br> + <li>Route ID: ${routeId}</li><br><li>Length: ${length} </li><br><li>Route: ${route}</li>`);
