@@ -2,7 +2,7 @@
 
     // You'll need to replace this with the URL you get when you
     // deploy your API Gateway.
-    const baseUrl = 'https://nh5gsos957.execute-api.us-east-1.amazonaws.com/prod/'
+    const baseUrl = 'https://au293wdqh6.execute-api.us-east-1.amazonaws.com/prod'
     console.log(`The base URL is ${baseUrl}.`);
 
     // Set up the functions to be called when the user clicks on any
@@ -23,7 +23,7 @@
     function randomRoute(runId, generation) {
         $.ajax({
             method: 'POST',
-            url: baseUrl + '/routes',
+            url: baseUrl + '/Routes',
             data: JSON.stringify({
                 runId: runId,
                 generation: generation
@@ -34,9 +34,9 @@
             success: showRoute,
             error: function ajaxError(jqXHR, textStatus, errorThrown) {
                 console.error(
-                    'Error generating random route: ', 
-                    textStatus, 
-                    ', Details: ', 
+                    'Error generating random route: ',
+                    textStatus,
+                    ', Details: ',
                     errorThrown);
                 console.error('Response: ', jqXHR.responseText);
                 alert('An error occurred when creating a random route:\n' + jqXHR.responseText);
@@ -64,9 +64,9 @@
         const generation = $('#generation-text-field').val();
         const numToGenerate =$('#num-to-generate').val();
         // Reset the contents of `#new-route-list` so that it's ready for
-        // `showRoute()` to "fill" it with the incoming new routes. 
+        // `showRoute()` to "fill" it with the incoming new routes.
         $('#new-route-list').text('');
-        // 
+        //
         async.times(numToGenerate, () => randomRoute(runId, generation));
     }
 
@@ -89,7 +89,7 @@
     function bestRoutes(runId, generation, numToReturn) {
         $.ajax({
             method:'GET',
-            url:baseUrl + '/best?runId=&generation=3&numToReturn=20',
+            url:baseUrl + '/best?runId=${runId}&generation=${generation}&numToReturn=${numToReturn}',
             data: JSON.stringify({
                 routeId: routeId,
             }),
@@ -97,9 +97,9 @@
             success: showBestRoutes,
             error: function ajaxError(jqXHR, textStatus, errorThrown) {
                 console.error(
-                    'Error generating random route: ', 
-                    textStatus, 
-                    ', Details: ', 
+                    'Error generating random route: ',
+                    textStatus,
+                    ', Details: ',
                     errorThrown);
                 console.error('Response: ', jqXHR.responseText);
                 alert('An error occurred when creating a random route:\n' + jqXHR.responseText);
@@ -111,7 +111,7 @@
         const runId = $('#runId-text-field').val();
         const generation = $('#generation-text-field').val();
         const numToGenerate =$('#num-to-generate').val();
-        
+
         $('#best-route-list').text('');
         bestRoutes(runId, generation, numToReturn);
 
@@ -130,7 +130,7 @@
     // The form of the `GET` request is:
     //   …/routes/:routeId
     // This request will return a complete route JSON object.
-    // You should display the returned information in 
+    // You should display the returned information in
     // `#route-by-id-elements` (after clearing it first).
     function routeById(routeId) {
         $.ajax({
@@ -140,9 +140,9 @@
             success: showRouteById,
             error: function ajaxError(jqXHR, textStatus, errorThrown) {
                 console.error(
-                    'Error getting route: ', 
-                    textStatus, 
-                    ', Details: ', 
+                    'Error getting route: ',
+                    textStatus,
+                    ', Details: ',
                     errorThrown);
                 console.error('Response: ', jqXHR.responseText);
                 alert('An error occurred when getting the route:\n' + jqXHR.responseText);
