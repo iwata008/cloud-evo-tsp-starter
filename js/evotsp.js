@@ -115,6 +115,7 @@
     }
 
     function showBestRoutes(result) {
+      console.log(result);
       for (let i = 0; i < result.length; i++) {
         const routeId = result[i].routeId;
         const length = result[i].length;
@@ -158,10 +159,10 @@
     function showRouteById(result) {
         console.log('New route received from API: ', result);
 
-        const partitionKey = result.partitionKey;
-        const routeId = result.routeId;
-        const length = result.length;
-        const route = result.route;
+        const partitionKey = result[0].partitionKey;
+        const routeId = result[0].routeId;
+        const length = result[0].length;
+        const route = result[0].route;
 
         $('#route-by-id-elements').append(`<li>Parition Key: ${partitionKey}</li><br> + <li>Route ID: ${routeId}</li><br><li>Length: ${length} </li><br><li>Route: ${route}</li>`);
     }
