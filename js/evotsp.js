@@ -2,7 +2,7 @@
 
     // You'll need to replace this with the URL you get when you
     // deploy your API Gateway.
-    const baseUrl = 'https://au293wdqh6.execute-api.us-east-1.amazonaws.com/prod'
+    const baseUrl = 'https://au293wdqh6.execute-api.us-east-1.amazonaws.com/prod';
     console.log(`The base URL is ${baseUrl}.`);
 
     // Set up the functions to be called when the user clicks on any
@@ -89,7 +89,7 @@
     function bestRoutes(runId, generation, numToReturn) {
         $.ajax({
             method:'GET',
-            url: baseUrl + `/best?runId=${runId}&generation=${generation}&numToReturn=${numToReturn}`
+            url: baseUrl + `/best?runId=${runId}&generation=${generation}&numToReturn=${numToReturn}`,
             contentType: 'application/json',
             success: showBestRoutes,
             error: function ajaxError(jqXHR, textStatus, errorThrown) {
