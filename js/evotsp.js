@@ -118,7 +118,7 @@
         const routeId = result.routeId;
         const length = result.length;
 
-        $('#best-route-list').apend(`<li>${length} (${routeId})</li>`);
+        $('#best-route-list').append(`<li>${length} (${routeId})</li>`);
     }
 
 
