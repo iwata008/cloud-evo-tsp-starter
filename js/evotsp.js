@@ -115,8 +115,9 @@
     }
 
     function showBestRoutes(result) {
+      console.log(result);
         const routeId = result.routeId;
-        const length = result.length;
+        const length = result.len;
 
         $('#best-route-list').append(`<li>${length} (${routeId})</li>`);
     }
