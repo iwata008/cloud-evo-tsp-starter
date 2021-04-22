@@ -91,7 +91,7 @@
             method:'GET',
             url:baseUrl + '/best?runId=${runId}&generation=${generation}&numToReturn=${numToReturn}',
             data: JSON.stringify({
-                routeId: routeId,
+                routeId: routeId
             }),
             contentType: 'application/json',
             success: showBestRoutes,
