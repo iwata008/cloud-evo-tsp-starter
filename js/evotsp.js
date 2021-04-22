@@ -89,7 +89,10 @@
     function bestRoutes(runId, generation, numToReturn) {
         $.ajax({
             method:'GET',
-            url:baseUrl + '/best?runId=${runId}&generation=${generation}&numToReturn=${numToReturn}',
+            url: baseUrl + `/best?runId=${runId}&generation=${generation}&numToReturn=${numToReturn}`,
+            data: JSON.stringify({
+                routeId: routeId
+            }),
             contentType: 'application/json',
             success: showBestRoutes,
             error: function ajaxError(jqXHR, textStatus, errorThrown) {
